@@ -1,0 +1,43 @@
+Annotated integration site report column descriptions. The optional HIV alignments are 
+not annotated.
+
+Count – The number of times that PCR product appeared in the data.
+
+Seq ID – The sequence ID of one of the PCR products in with those particular data.
+Can be used to search for the sequence and others like it in the intermediate data files.
+
+MID – The ten random bases on the primer.
+
+Junction chr – The chromosome where you find the site.
+
+Junction strand – The orientation of the provirus relative to the reference genome.
+
+Junction base – Where the first human base after the junction. The same site will 
+differ +/- 5 bases versus the 3LTR and 5LTR because of the five-base duplication.
+
+Breakpoint chr – The chromosome where the fragment ends. Should match junction chr.
+
+Breakpoint strand – Should be opposite the junction strand.
+
+Breakpoint base – There base where the fragment ends. Should be on the same chromosome. 
+
+Length – The length of the PCR product. The absolute value of the breakpoint base minus 
+the junction base.
+
+HIV LTR – Which LTR junction the read is from. The 3LTR and 5LTR are always amplified 
+on the sense and antisense strands, respectively. This is what’s indicated in the parentheses. 
+
+Provirus orientation – The orientation of the provirus relative to the reference genome.
+
+Prediction – The script guesses if the fragment may be the result of non-specific priming 
+to the genome. It compares the end of the primer to the 30 bases upstream of the integration
+211sites and warns you if it finds a 70% match to the reference in a 10- base stretch.
+
+Upstream 30 – The thirty reference bases upstream of the integration site.
+
+Downstream 30 – The thirty reference bases downstream of the integration site.
+
+Read 1 – The unedited first read of the pair.
+
+Read 2 – The unedited second read of the pair.
+ 

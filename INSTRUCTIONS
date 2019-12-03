@@ -1,0 +1,70 @@
+Before running the scripts, change the path to the modules to your directory at
+line 18 of _1demultiplex.pl and line 16 of _2blat_pipeline.pl and make sure
+the variables on lines 21 to 36 of _2blat_pipeline.pl are specific to your system
+and desired analysis.
+
+ISA pipeline quick steps:
+
+1.	Set your working directory to the directory that contains your fastq.gz files. Copy a settings file template to the folder containing your fastq.gz files. Edit the
+	settings file to be specific for your data.
+
+2.	Copy a settings file template to the folder containing your fastq.gz files. Edit the
+	settings file to be specific for your data.
+
+3.	Run 1_demultiplex.pl on the command line with your settings file as a 
+	command line argument. The demultiplexed data will be printed in a folder for the 3LTR and/or 
+	5LTR with the barcodes as the name. A file will be made for each barcode combination that
+	has reads that pass the filters.
+
+4.	Run 2_blat_pipeline.pl with the path to the debarcoded data files as command line
+	arguments. For example, "3LTR/PE1_D505_PE2_D706.txt". Multiple files can run files sequentially
+	by putting listing more than one on path the command line.
+
+
+
+Script lines to change:
+
+	1_demultiplex.pl
+		use lib '/path/to/files'; # Change this path to the location of the pipeline scripts.
+		
+	2_blat_pipeline.pl
+		use lib '/path/to/files'; # Change this path to the location of the pipeline scripts.
+		
+		# You can filter sequences pre-alignment by defining $filter_sequence with a regular
+		# expression. Default is undef.
+		my $filter_sequence = "GTGGCGCC|GTCCCCCC"; 
+		
+		# Edit these values to suit your system.
+		my $chr_ext = ".2bit"; # The extension of the chromosome files used for Blat.
+		my @hg19_chrs = (1..22,"X","Y","M","Un"); # List of hg19 chromosomes for alignment
+		my $path2_11ooc = "~/path/to/11.ooc"; # Location of 11.ooc file required for BLAT.			
+		my $path2blat = "/Applications/Blat/blat"; # The path of the BLAT application
+		my $path2hg19 = "/path/to/hg19chromFA/chr"; # The path to the human chromosome files
+		my $path2HIV = "/path/to/HIV_genome/HIV1_complete_genome.$chr_ext"; # Path to the HIV genome
+
+Edit the settings file to be specific for your sequencing run.  The example settings file is 
+shown below with descriptions. IUPAC codes can be used for ambiguous bases.
+
+	<PE1barcodes> # Enter the LTR primer barcode(s) in this section. Enter one or more depending
+	D504		  # on if you want to analyze one LTR, both, and/or check for contamination.
+	D505
+	<PE2barcodes> # Enter your Linker primer barcode.  The script doesn't check for this barcode
+	D706		  # sequence because the MiSeq will have separated by this barcode already.
+	<LTR>	# Specify in this section if you want to analyze one LTR or both.
+	3LTR
+	5LTR
+	<3LTR_primer>  # Enter your 3LTR primer sequence.
+	CCCTTTTAGTCAGTGTGGAAAATC
+	<3LTR_junction> # Enter the last several bases of your 3LTR junction sequence. 
+	TCTCTAGCA
+	<5LTR_primer>  # Enter your 5LTR primer sequence.
+	TGGGAGTGAAYTAGCCCTTC
+	<5LTR_junction>  # Enter the last several bases of your 5LTR junction sequence. 
+	CCCTTCCA
+	<file_name_template> # Enter the name of one of your data files.
+	example_MiSeq_data_S1_L001_R1_001.fastq.gz
+	<pairs> # The number of Read 1 & Read 2 pairs for analysis. 1 per Miseq run but more for HiSeq.
+	1
+
+
+		

@@ -1,0 +1,70 @@
+ISA output file descriptions:
+
+	-	PE1_[YOUR_INDEX]_PE2_[YOUR_INDEX].txt - Contains pairs of trimmed
+		reads, quality scores, and sequence ID's. the columns are:
+		
+		seq ID,  1, read 1 pre-junction seq, read 1 post-junction seq, Read1 quality, seq ID, 2, read 2 pre-linker seq, raed 2 post-linker seq, read 2 quality
+	
+	-	debarcode_log.txt and blat_log.txt - Log files of the two processes. Contain time
+		stamps, filter settings, etc.
+	
+	-	3LTR_primer.txt and 5LTR_primer.txt - Contain the primer and junction
+		sequences for later analyses.
+		
+	-	unique_paired-end_reads.txt - Similar to the output of 1_demultiplex.pl
+		Sequences in this file have been filtered and include only those 20 bases or longer, have Q scores of
+		at least 20, and that don't contain the filter sequence (if applicable) It only contains one entry for
+		each unique pairs of sequences, based on the first 15 bases of the read 1 post-LTR portion and the read 2
+		post-linker portion. The number of times that each pair is seen is appended to the sequence ID.
+		
+	-	read1_fasta_for_alignment.fa, read2_fasta_for_alignment.fa
+		The fasta files used by Blat. Only contains unique pairs of sequences.
+		
+	-	read1_blat_results.txt, read2_blat_results.txt
+		The raw blat output.
+		
+	-	read1_blat_results_high_quality.txt, read2_blat_results_high_quality.txt
+		Contains filtered blat data. Only contains alignments that start 3 or fewer bases into the sequence, fewer
+		than 10 Q-gap and T-gap bases, 20 or more matches, and greater than 95% identity.
+
+	-	read1_blat_results_best_alignments.txt, read2_blat_results_best_alignments.txt
+		Contains filtered blat data. Only contains alignments the highest scored alignment for
+		each sequence ID that only match one place in the genome.
+		
+	-	read1_blat_results_repetitive_regions.txt, read2_blat_results_repetitive_regions.txt
+		Contains the blat hits that align more than once.
+
+	-	combined_unfiltered_match_pairs.txt - The first file to resemble the final output.
+		Contains the coordinates for pairs that are found in both "best_alignments" files.
+		
+	-	filtered_out_unmatched_read_loci.txt - Contains only integration sites that are on the same chromosome
+		and within 10 kb of one another.
+		
+	-	merged_integration_sites.txt - Contains the results of merging integration sites
+		that have been determined to come from the same molecule bases on integration site locus,
+		fragment length, read count, and molecular identifier (MID) sequence.
+	
+	-	annotated_integration_sites_report_with_fuzz.txt - This file is the result of adding additional 
+		information to merged_filtered_integration_sites.txt. This file has 30 bases
+		upstream and downstream of each integration site, the complete read 1 and
+		read 2 sequences, and the approximate likelihood that the site is the result of
+		mis-priming based on the similarity of the primer to the sequence upstream
+		of the integration site. Contains entries labeled as fuzz or potential fuzz.
+	
+	-	final_annotated_integration_sites_report.txt - The last report generated. It contains
+		only the reads from annotated_integration_sites_report_with_fuzz.txt that aren't labeled
+		as fuzz or potential fuzz.
+
+	-	all_read1_coordinates_for_Uclust.txt - Similar to combined_unfiltered_match_pairs.txt. Contains the
+		alignment coordinates for all entries in read1_blat_results_best_alignments.txt and (if present)
+		read2_blat_results_best_alignments.txt. Used to supplement the Uclust results.
+	
+	-	read1_sorted_by_length_for_Uclust.txt - This is a fasta file of the sequences in PEread_LTR_nonInternal_linker_long_UniquePairWct_F.fa
+		sorted by descending lengths of the sequences for input for the Uclust program.
+		
+	-	Uclust_results_raw.txt - This file is the result of running Uclust.
+	
+	-	Uclust_results_reformatted_with_sequences.txt - This file is the Uclust output
+		reformatted for easier reading.
+		
+	-	Uclust_list_of_cluster_seeds.txt - A list of the seeds used for clustering
