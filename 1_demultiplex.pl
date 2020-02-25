@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# _1demultiplex.pl
+# 1_demultiplex.pl
 # Dr. Xiaolin Wu & Daria W. Wells
 
 # This script is used to filter Illumina paired-end ISA sequence data from the MiSeq, 

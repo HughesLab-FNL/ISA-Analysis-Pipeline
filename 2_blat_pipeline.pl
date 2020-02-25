@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# _2blat_pipeline.pl
+# 2_blat_pipeline.pl
 # Dr. Xiaolin Wu & Daria W. Wells
 
 # This script is used after the ISA debarcoding script.  It requires BLAT to
