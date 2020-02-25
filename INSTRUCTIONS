@@ -41,6 +41,7 @@ Script lines to change:
 		my $path2blat = "/Applications/Blat/blat"; # The path of the BLAT application
 		my $path2hg19 = "/path/to/hg19chromFA/chr"; # The path to the human chromosome files
 		my $path2HIV = "/path/to/HIV_genome/HIV1_complete_genome.$chr_ext"; # Path to the HIV genome
+		my $path2uclust = "/Applications/USEARCHfolder/uclust"; # Path to the Uclust program.
 
 Edit the settings file to be specific for your sequencing run.  The example settings file is 
 shown below with descriptions. IUPAC codes can be used for ambiguous bases.
