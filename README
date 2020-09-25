@@ -4,7 +4,6 @@ if you encounter any problems, or if you have any questions or suggestions.
 
 The pipeline requires the following which are not included in this set:
 
-	-	IO::Zlib - A core Perl module.
 	-	UCSC blat command line tool.
 	-	hg19 genome as one fasta file per chromosome, as well as one for HIV. The files 
 		should be named as chr1.fa, chr2.fa...chr22.fa, chrX.fa, chrY.fa, chrM.fa, chrUn.fa. 
