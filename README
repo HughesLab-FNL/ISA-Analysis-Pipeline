@@ -8,10 +8,6 @@ The pipeline requires the following which are not included in this set:
 	-	hg19 genome as one fasta file per chromosome, as well as one for HIV. The files 
 		should be named as chr1.fa, chr2.fa...chr22.fa, chrX.fa, chrY.fa, chrM.fa, chrUn.fa. 
 	
-		Not required, but recommended, is to convert the chromosome fasta files to .2bit format
-		to speed up Blat alignment. Fasta files can be converted to 2bit format using faToTwoBit, which is 
-		included in the Blat suite. Make sure you have the correct extension at 2_blat_pipeline.pl
-		line 30.
 		
 The files included in this set are:
 	
